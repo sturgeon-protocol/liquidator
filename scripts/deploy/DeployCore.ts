@@ -8,14 +8,14 @@ async function main() {
 
   const controller = await DeployerUtils.deployController(signer);
   const liquidator = await DeployerUtils.deployTetuLiquidator(signer, controller.address);
-  const uniSwapper = await DeployerUtils.deployUni2Swapper(signer, controller.address);
+  const uniSwapper = await DeployerUtils.deployUni3Swapper(signer, controller.address);
 
   const data = `
   controller: ${controller.address}
   liquidator: ${liquidator.address}
-  uniSwapper: ${uniSwapper.address}
+  uni3Swapper: ${uniSwapper.address}
   `
-  writeFileSync('tmp/deployed/liquidator.txt', data, 'utf8');
+  writeFileSync('tmp/deployed-liquidator.txt', data, 'utf8');
 }
 
 main()

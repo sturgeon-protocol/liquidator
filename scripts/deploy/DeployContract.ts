@@ -58,7 +58,7 @@ export async function deployContract<T extends ContractFactory>(
   const receipt = await ethers.provider.getTransactionReceipt(instance.deployTransaction.hash);
   console.log('DEPLOYED: ', name, receipt.contractAddress);
 
-  if (hre.network.name !== 'hardhat') {
+  if (hre.network.name !== 'hardhat' && hre.network.name !== 'unreal') {
     await wait(hre, 10);
     if (args.length === 0) {
       await verify(hre, receipt.contractAddress);

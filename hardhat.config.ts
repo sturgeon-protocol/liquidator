@@ -4,17 +4,15 @@ import "@nomiclabs/hardhat-ethers";
 import "@nomiclabs/hardhat-etherscan";
 import "@nomiclabs/hardhat-web3";
 import "@nomiclabs/hardhat-solhint";
-// import '@openzeppelin/hardhat-upgrades';
 import "@typechain/hardhat";
-// import "hardhat-docgen";
 import "hardhat-contract-sizer";
 import "hardhat-gas-reporter";
 import "hardhat-tracer";
-// import "hardhat-etherscan-abi";
 import "solidity-coverage"
 import "hardhat-abi-exporter"
 import {task} from "hardhat/config";
 import {deployContract} from "./scripts/deploy/DeployContract";
+import "@xyrusworx/hardhat-solidity-json";
 
 dotEnvConfig();
 // tslint:disable-next-line:no-var-requires
@@ -107,6 +105,9 @@ const argv = require('yargs/yargs')()
     zkevmForkBlock: {
       type: "number",
       default: 8579672
+    },
+    unrealRpcUrl: {
+      type: "string",
     },
   }).argv;
 
@@ -241,6 +242,11 @@ export default {
         }
       }
 		},
+    unreal: {
+      url: argv.unrealRpcUrl || '',
+      chainId: 18231,
+      accounts: [argv.privateKey]
+    },
   },
   etherscan: {
     //  https://hardhat.org/plugins/nomiclabs-hardhat-etherscan.html#multiple-api-keys-and-alternative-block-explorers

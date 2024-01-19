@@ -77,5 +77,8 @@
   },
   "engines": {
     "node": "^14.18.1"
+  },
+  "devDependencies": {
+    "@xyrusworx/hardhat-solidity-json": "^1.0.2"
   }
 }

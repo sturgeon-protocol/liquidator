@@ -42,7 +42,7 @@ describe("BalancerLinearPoolSwapperTests", function () {
     await TimeUtils.rollback(snapshot);
   });
 
-  it.only("get price eq queryBatchSwap for USDC -> BB_T_USDC (main -> bpt)", async () => {
+  it("get price eq queryBatchSwap for USDC -> BB_T_USDC (main -> bpt)", async () => {
     const vault = IBVault__factory.connect(MaticAddresses.BALANCER_VAULT, signer)
     const pool = IBLinearPoolMinimal__factory.connect(MaticAddresses.BB_T_USDC, signer)
     const amount = parseUnits('1000000', 6);

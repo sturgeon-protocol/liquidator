@@ -106,6 +106,9 @@ const argv = require('yargs/yargs')()
       type: "number",
       default: 8579672
     },
+    realRpcUrl: {
+      type: "string",
+    },
     unrealRpcUrl: {
       type: "string",
     },
@@ -242,6 +245,11 @@ export default {
         }
       }
 		},
+    real: {
+      url: argv.realRpcUrl || '',
+      chainId: 111188,
+      accounts: [argv.privateKey]
+    },
     unreal: {
       url: argv.unrealRpcUrl || '',
       chainId: 18231,
